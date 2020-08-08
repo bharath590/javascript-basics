@@ -1,0 +1,26 @@
+<script>
+    function Person(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    Person.prototype.add = function () {
+        console.log(this.x + this.y);
+    }
+    let p1 = new Person(10, 20);
+    let p2 = new Person(30, 40);
+    p1.add();
+    p2.add();
+
+    function Student(z) {
+        Person.apply(this, [50, 60]);
+        this.z = z;
+    }
+    Student.prototype = Object.create(Person.prototype);
+    Student.prototype.construcor  = Student;
+    Student.prototype.add = function () {
+        console.log(this.x - this.y);
+    }
+    let s1 = new Student(11);
+    s1.add();
+
+</script>
